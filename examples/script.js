@@ -2,34 +2,20 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 
 window.addEventListener("load", function () {
   
-  let wrapper = document.querySelector(".container");
-  let text = document.querySelector(".Horizontal__text");
-  let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
+document.body.addEventListener("mousemove", evt => {
+  const mouseX = evt.clientX;
+  const mouseY = evt.clientY;
 
-  const scrollTween = gsap.to(text, {
-    xPercent: -1000,
-    ease: "none",
-    scrollTrigger: {
-      trigger: wrapper,
-      pin: true,
-      end: "+=5000px",
-      scrub: true
-    }
-  });
+  gsap.set(".cursor", {
+    x: mouseX,
+    y: mouseY });
 
-split.chars.forEach((char) => {
-  gsap.from(char, {
-    yPercent: "random(-200, 200)",
-    rotation: "random(-20, 20)",
-    ease: "back.out(1.2)",
-    scrollTrigger: {
-      trigger: char,
-      containerAnimation: scrollTween,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 1
-    }
-  });
+
+  gsap.to(".shape", {
+    x: mouseX,
+    y: mouseY,
+    stagger: -0.1 });
+
 });
 
   let pinWrap = document.querySelector(".pin-wrap");

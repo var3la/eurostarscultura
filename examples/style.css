@@ -31,7 +31,11 @@ img {
   width: auto;
   object-fit: cover;
 }
-
+img.footer {
+  height: 80vh;
+  width: 100%;
+  object-fit: contain;
+}
 h1 {
   font-size: 5rem;
   line-height: 1;
@@ -98,23 +102,68 @@ p {
   width: 200px;
   line-height: 1.5;
 }
-.Horizontal {
-  overflow: hidden;
+
+.shapes {
+  position: relative;
   height: 100vh;
-  display: flex;
-  align-items: center;
+  width: 100vw;
+  background: var(--bg-color);
+;
+  overflow: hidden;
 }
 
-.Horizontal__text {
-  display: flex;
-  width: max-content;
-  white-space: nowrap;
-  gap: 4vw;
-  padding-left: 100vw;
+.shape {
+  will-change: transform;
+  position: absolute;
+  border-radius: 50%;
+}
+.shape.shape-1 {
+  background: #005ffe;
+  width: 650px;
+  height: 650px;
+  margin: -325px 0 0 -325px;
+}
+.shape.shape-2 {
+  background: #ffe5e3;
+  width: 440px;
+  height: 440px;
+  margin: -220px 0 0 -220px;
+}
+.shape.shape-3 {
+  background: #ffcc57;
+  width: 270px;
+  height: 270px;
+  margin: -135px 0 0 -135px;
 }
 
-.heading-xl {
-  font-size: clamp(2rem, 10vw, 12rem);
-  font-weight: 600;
-  line-height: 1.1;
+
+
+h1 {
+  font-size: 100px;
+  color: #000;
+  margin: 0;
+  text-align: center;
+}
+@media (min-width: 419px) {
+  h1 {
+    font-size: 100px;
+    font-size: calc((0.0989119683 * 100vw + (58.5558852621px)));
+  }
+}
+@media (min-width: 1430px) {
+  h1 {
+    font-size: 200px;
+  }
+}
+
+::-moz-selection {
+  color: #fff;
+  background: rgb(204, 153, 68);
+;
+}
+
+::selection {
+  color: #fff;
+  background: rgb(204, 153, 68);
+;
 }
