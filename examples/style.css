@@ -143,6 +143,7 @@ h1 {
   color: #000;
   margin: 0;
   text-align: center;
+  opacity: 0;
 }
 @media (min-width: 419px) {
   h1 {

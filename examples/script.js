@@ -1,7 +1,7 @@
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 window.addEventListener("load", function () {
-  
+/*  
 document.body.addEventListener("mousemove", evt => {
   const mouseX = evt.clientX;
   const mouseY = evt.clientY;
@@ -17,7 +17,17 @@ document.body.addEventListener("mousemove", evt => {
     stagger: -0.1 });
 
 });
+*/
+let split = SplitText.create(".content h1", { type: "chars" });
 
+gsap.from(split.chars, {
+  x: 20,
+  yPercent: -50,
+  opacity: 0,
+  stagger: 0.05
+});
+
+gsap.set("h1", { opacity: 1 });
   let pinWrap = document.querySelector(".pin-wrap");
   let pinWrapWidth = pinWrap.offsetWidth;
   let horizontalScrollLength = pinWrapWidth - window.innerWidth;
