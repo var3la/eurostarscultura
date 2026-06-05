@@ -1,6 +1,16 @@
+
+@font-face {
+  font-family: Gildadisplay;
+  src: url("https://cdn.prod.website-files.com/6979d409675b9517ac3bfcd8/698072cf1473e72c57dccb81_GildaDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --text-color: #111;
   --bg-color: #b9b3a9;
+  --font-display: Gildadisplay, serif;
+  --font-body: termina, sans-serif;
 }
 
 body {
@@ -83,6 +93,7 @@ h2 {
 }
 
 .pin-wrap {
+
   height: 100vh;
   display: flex;
   justify-content: flex-start;
@@ -167,4 +178,10 @@ h1 {
   color: #fff;
   background: rgb(204, 153, 68);
 ;
+}
+.content{
+  font-family: var(--font-display);
+  font-size: 4rem;
+  width: 100%;
+  
 }
