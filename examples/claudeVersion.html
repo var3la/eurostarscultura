@@ -143,7 +143,7 @@
     grid-column: 2; grid-row: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
     padding: 5rem var(--px) 2.5rem;
     background: var(--cream);
   }
@@ -460,7 +460,7 @@
     .hero-title-block {
       grid-column: 1 / 3;
       grid-row: 2;
-      padding: 3rem var(--px) 3rem;
+      padding: 5rem var(--px) 3rem;
     }
     /* hide the two bottom hero images on tablet */
     .hero > .hero-cell:not(.hero-main) { display: none; }
@@ -499,7 +499,7 @@
       height: 70vw;
       min-height: 240px;
     }
-    .hero-title-block { grid-column: 1; padding: 2.5rem var(--px) 2.5rem; }
+    .hero-title-block { grid-column: 1; padding: 4.5rem var(--px) 2.5rem; }
 
     /* Mission */
     .mission-right { height: 80vw; }
@@ -595,18 +595,36 @@ section {
   margin-left: auto;
 }
 
-.horiz-gallery-strip,
+/* ── HERO GALLERY ── */
+#hero-gallery {
+  /* overflow visible permite que GSAP haga el pin sin recortar */
+  overflow: visible !important;
+  height: 100vh;
+}
+
 .horiz-gallery-wrapper {
   display: flex;
   flex-wrap: nowrap;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horiz-gallery-strip {
+  display: flex;
+  flex-wrap: nowrap;
   will-change: transform;
-  position: relative;
+  height: 100%;
 }
 
 .project-wrap {
   width: 33vw;
+  flex-shrink: 0;
   padding: 2rem;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 .project-wrap img {
   width: 100%;
@@ -615,53 +633,40 @@ section {
 }
 
 </style>
-<div id="smooth-wrapper">
-  <div id="smooth-content">
-
-    <section class="panel plain">
-      <h3>Arte y Cultura  |  Eurostars</h3>
-    </section>
-
-    <section id="portfolio">
-      <div class="container-fluid">
-        <div class="horiz-gallery-wrapper">
-          <div class="horiz-gallery-strip">
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-1.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-2.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-3.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-4.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-5.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-6.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-7.jpg" alt="" />
-            </div>
-            <div class="project-wrap">
-              <img src="https://assets.codepen.io/16327/portrait-image-8.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="panel plain">
-      <h3>That's it!</h3>
-    </section>
-
-  </div>
+<!-- HERO -->
+<div class="hero-title-block">
+  <p class="hero-eyebrow"><span>Desde 2005 —</span></p>
+  <h1 class="hero-h1">
+    <span>Arte</span>
+    <span>y <em>Cultura</em></span>
+    <span>Eurostars</span>
+  </h1>
+  <p class="hero-scroll">
+    <span class="hero-scroll-line"></span>
+    Descubrir
+  </p>
 </div>
+<!-- HERO GALLERY (scroll horizontal) -->
+<section id="hero-gallery">
+  <div class="hero-content">
+    <div class="horiz-gallery-wrapper">
+      <div class="horiz-gallery-strip">
+        <div class="project-wrap">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80" alt="Arte contemporáneo" />
+        </div>
+        <div class="project-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Fotografía artística" />
+        </div>
+        <div class="project-wrap">
+          <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80" alt="Galería de arte" />
+        </div>
+        <div class="project-wrap">
+          <img src="https://assets.codepen.io/16327/portrait-image-6.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- MISSION -->
 <section class="mission" id="mission">
   <div class="mission-left">
@@ -819,11 +824,10 @@ section {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
-const isMobile = () => window.matchMedia('(max-width: 600px)').matches;
+const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
 
 /* ── CURSOR (desktop only) ── */
 const dot  = document.getElementById('cursorDot');
@@ -885,7 +889,7 @@ tl.from('.hero-h1 span',  { yPercent: 110, duration: 1.1, stagger: 0.12, ease: '
 tl.from('.hero-eyebrow span', { yPercent: 100, duration: 0.8, ease: 'power3.out' }, 0.5);
 tl.to('.nav-logo', { opacity: 1, duration: 0.6 }, 0.8);
 tl.to('.nav-links a', { opacity: 1, duration: 0.5, stagger: 0.08 }, 0.9);
-tl.to('.nav-burger',  { opacity: 1, duration: 0.5 }, 0.9);
+tl.to('.nav-drawer a',  { opacity: 1, duration: 0.5 }, 0.9);
 tl.to('.hero-scroll', { opacity: 1, duration: 0.8 }, 1.4);
 tl.from('.hero-scroll-line', { scaleX: 0, transformOrigin: 'left', duration: 1, ease: 'power3.out' }, 1.4);
 
@@ -946,53 +950,38 @@ gsap.from('.footer-top > div', {
 /* ── NAV SCROLL ── */
 ScrollTrigger.create({
   start: 'top -90',
-  onEnter: () => gsap.to('nav', { background: 'rgba(245,240,232,0.94)', backdropFilter: 'blur(12px)', padding: `0.85rem var(--px)`, duration: 0.4 }),
-  onLeaveBack: () => gsap.to('nav', { background: 'transparent', backdropFilter: 'blur(0px)', padding: `1.25rem var(--px)`, duration: 0.4 })
-});
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-const smoother = ScrollSmoother.create({
-  wrapper: "#smooth-wrapper",
-  content: "#smooth-content",
-  smooth: 2,
-  normalizeScroll: true,
-  ignoreMobileResize: true,
-  preventDefault: true
+  onEnter:     () => gsap.to('nav', { background: 'rgba(245,240,232,0.94)', backdropFilter: 'blur(12px)',  padding: `0.85rem var(--px)`, duration: 0.4 }),
+  onLeaveBack: () => gsap.to('nav', { background: 'transparent',           backdropFilter: 'blur(0px)',   padding: `1.25rem var(--px)`, duration: 0.4 })
 });
 
-//Horizontal Scroll Galleries
-if (document.getElementById("portfolio")) {
-  const horizontalSections = gsap.utils.toArray(".horiz-gallery-wrapper");
+/* ── HERO GALLERY — scroll horizontal con pin limpio ── */
+(function initHeroGallery() {
+  const wrapper = document.querySelector('#hero-gallery .horiz-gallery-wrapper');
+  const strip   = document.querySelector('#hero-gallery .horiz-gallery-strip');
+  if (!wrapper || !strip) return;
 
-  horizontalSections.forEach(function (sec, i) {
-    const pinWrap = sec.querySelector(".horiz-gallery-strip");
+  let scrollLength = 0;
 
-    let pinWrapWidth;
-    let horizontalScrollLength;
+  function calcLength() {
+    scrollLength = strip.scrollWidth - window.innerWidth;
+  }
+  calcLength();
 
-    function refresh() {
-      pinWrapWidth = pinWrap.scrollWidth;
-      horizontalScrollLength = pinWrapWidth - window.innerWidth;
+  gsap.to(strip, {
+    x: () => -scrollLength,
+    ease: 'none',
+    scrollTrigger: {
+      trigger:          '#hero-gallery',
+      start:            'top top',
+      end:              () => `+=${strip.scrollWidth}`,
+      pin:              true,
+      scrub:            1,
+      anticipatePin:    1,
+      invalidateOnRefresh: true,
+      onRefresh:        calcLength
     }
-
-    refresh();
-    // Pinning and horizontal scrolling
-    gsap.to(pinWrap, {
-      scrollTrigger: {
-        scrub: true,
-        trigger: sec,
-        pin: sec,
-        start: "center center",
-        end: () => `+=${pinWrapWidth}`,
-        invalidateOnRefresh: true
-      },
-      x: () => -horizontalScrollLength,
-      ease: "none"
-    });
-
-    ScrollTrigger.addEventListener("refreshInit", refresh);
   });
-}
+})();
 
 </script>
 </body>
