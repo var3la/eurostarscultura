@@ -83,7 +83,7 @@
     gap: 5px;
     cursor: pointer;
     padding: 4px;
-    opacity: 1;
+    opacity: 0;
   }
   .nav-burger span {
     display: block;
@@ -107,8 +107,9 @@
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
+    transform: translateY(-100%);
   }
-  .nav-drawer.visible { transform: translateY(0); }
+  .nav-drawer.open { transform: translateY(0); }
   .nav-drawer a {
     font-family: var(--ff-display);
     font-size: 2rem;
@@ -142,8 +143,8 @@
     grid-column: 2; grid-row: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 8rem var(--px) 5rem;
+    justify-content: flex-end;
+    padding: 5rem var(--px) 2.5rem;
     background: var(--cream);
   }
   .hero-eyebrow {
@@ -165,6 +166,23 @@
   }
   .hero-h1 span { display: block; }
   .hero-h1 em { font-style: italic; }
+  .hero-scroll {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+  }
+  .hero-scroll-line {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    transform-origin: left;
+  }
+
   /* ── MISSION ── */
   .mission {
     display: grid;
@@ -177,7 +195,6 @@
     flex-direction: column;
     justify-content: center;
     border-right: 1px solid var(--border);
-    align-items: center;
   }
   .section-number {
     font-family: var(--ff-display);
@@ -443,7 +460,7 @@
     .hero-title-block {
       grid-column: 1 / 3;
       grid-row: 2;
-      padding: 5rem var(--px) 3rem;
+      padding: 3rem var(--px) 3rem;
     }
     /* hide the two bottom hero images on tablet */
     .hero > .hero-cell:not(.hero-main) { display: none; }
@@ -482,7 +499,7 @@
       height: 70vw;
       min-height: 240px;
     }
-    .hero-title-block { grid-column: 1; padding: 4.5rem var(--px) 2.5rem; }
+    .hero-title-block { grid-column: 1; padding: 2.5rem var(--px) 2.5rem; }
 
     /* Mission */
     .mission-right { height: 80vw; }
@@ -533,84 +550,118 @@
   <a href="#">Wine &amp; Books</a>
 </div>
 
-<style>
-#hero-gallery {
-  overflow: visible !important;
-}
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-cell hero-main">
+    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80" alt="Arte contemporáneo" />
+  </div>
+  <div class="hero-title-block">
+    <p class="hero-eyebrow"><span>Desde 2005 —</span></p>
+    <h1 class="hero-h1">
+      <span>Arte</span>
+      <span>y <em>Cultura</em></span>
+      <span>Eurostars</span>
+    </h1>
+    <p class="hero-scroll">
+      <span class="hero-scroll-line"></span>
+      Descubrir
+    </p>
+  </div>
+  <div class="hero-cell">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Fotografía artística" />
+  </div>
+  <div class="hero-cell">
+    <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80" alt="Galería de arte" />
+  </div>
+</section> 
+<!-- <style>
 
-.horiz-gallery-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
+.row,
+.section,
+section {
+  position: relative;
   overflow: hidden;
 }
+.section,
+section {
+  text-align: center;
+}
 
-.horiz-gallery-strip {
+.container-fluid {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.horiz-gallery-strip,
+.horiz-gallery-wrapper {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
   will-change: transform;
-  height: 100%;
-  padding:0;
-  margin:0;
+  position: relative;
 }
 
 .project-wrap {
   width: 33vw;
-  flex-shrink: 0;
   padding: 2rem;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-sizing: content-box;
 }
-
 .project-wrap img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
 
-@media (max-width: 600px) {
-  .project-wrap {
-    width: 66vw;
-    padding: 1rem;
-  }
-}
-</style>
-<!-- HERO -->
-<div class="hero-title-block">
-  <p class="hero-eyebrow"><span>Desde 2005 —</span></p>
-  <h1 class="hero-h1">
-    <span>Arte</span>
-    <span>y <em>Cultura</em></span>
-    <span>Eurostars</span>
-  </h1>
+</style> -->
+<!-- <div id="smooth-wrapper">
+  <div id="smooth-content">
 
-</div>
-<!-- HERO GALLERY (scroll horizontal) -->
-<section id="hero-gallery">
-  <div class="hero-content">
-    <div class="horiz-gallery-wrapper">
-      <div class="horiz-gallery-strip">
-        <div class="project-wrap">
-          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80" alt="Arte contemporáneo" />
+    <section class="panel plain">
+      <h3>Arte y Cultura  |  Eurostars</h3>
+    </section>
+
+    <section id="portfolio">
+      <div class="container-fluid">
+        <div class="horiz-gallery-wrapper">
+          <div class="horiz-gallery-strip">
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-1.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-2.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-3.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-4.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-5.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-6.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-7.jpg" alt="" />
+            </div>
+            <div class="project-wrap">
+              <img src="https://assets.codepen.io/16327/portrait-image-8.jpg" alt="" />
+            </div>
+          </div>
         </div>
-        <div class="project-wrap">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Fotografía artística" />
-        </div>
-        <div class="project-wrap">
-          <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80" alt="Galería de arte" />
-        </div>
-        <div class="project-wrap">
-          <img src="https://assets.codepen.io/16327/portrait-image-6.jpg" alt="" />
-        </div>
+
       </div>
-    </div>
+    </section>
+
+    <section class="panel plain">
+      <h3>That's it!</h3>
+    </section>
+
   </div>
-</section>
+</div> -->
 <!-- MISSION -->
 <section class="mission" id="mission">
   <div class="mission-left">
@@ -768,10 +819,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
+const isMobile = () => window.matchMedia('(max-width: 600px)').matches;
 
 /* ── CURSOR (desktop only) ── */
 const dot  = document.getElementById('cursorDot');
@@ -802,57 +854,41 @@ if (!('ontouchstart' in window)) {
 }
 
 /* ── MOBILE MENU ── */
-/* ── MOBILE MENU ── */
 const burger = document.getElementById('navBurger');
 const drawer = document.getElementById('navDrawer');
 const drawerLinks = drawer.querySelectorAll('a');
-let drawerOpen = false;
-
-function openDrawer() {
-  drawerOpen = true;
-  burger.classList.add('open');
-  drawer.classList.add('visible');
-  gsap.fromTo(drawer,
-    { yPercent: -100 },
-    { yPercent: 0, duration: 0.5, ease: 'power3.out' }
-  );
-  gsap.fromTo(drawerLinks,
-    { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, stagger: 0.07, delay: 0.2, duration: 0.5, ease: 'power2.out' }
-  );
-}
-
-function closeDrawer() {
-  drawerOpen = false;
-  burger.classList.remove('open');
-  gsap.to(drawer, {
-    yPercent: -100, duration: 0.4, ease: 'power3.in',
-    onComplete: () => drawer.classList.remove('visible')
-  });
-}
 
 burger.addEventListener('click', () => {
-  drawerOpen ? closeDrawer() : openDrawer();
+  const isOpen = burger.classList.toggle('open');
+  if (isOpen) {
+    gsap.to(drawer, { duration: 0 }); // force display
+    drawer.classList.add('open');
+    gsap.from(drawer, { yPercent: -100, duration: 0.5, ease: 'power3.out' });
+    gsap.from(drawerLinks, { opacity: 0, y: 20, stagger: 0.07, delay: 0.2, duration: 0.5, ease: 'power2.out' });
+  } else {
+    gsap.to(drawer, { yPercent: -100, duration: 0.4, ease: 'power3.in', onComplete: () => drawer.classList.remove('open') });
+  }
 });
 
 drawerLinks.forEach(link => {
-  link.addEventListener('click', closeDrawer);
+  link.addEventListener('click', () => {
+    burger.classList.remove('open');
+    gsap.to(drawer, { yPercent: -100, duration: 0.4, ease: 'power3.in', onComplete: () => drawer.classList.remove('open') });
+  });
 });
 
 /* ── PAGE LOAD ── */
 const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-if (!isMobile()) {
-  tl.from('.hero-cell img', { scale: 1.18, opacity: 0, duration: 1.6, stagger: 0.15, ease: 'power2.out' }, 0);
-}
+tl.from('.hero-cell img', { scale: 1.18, opacity: 0, duration: 1.6, stagger: 0.15, ease: 'power2.out' }, 0);
 tl.from('.hero-h1 span',  { yPercent: 110, duration: 1.1, stagger: 0.12, ease: 'power4.out' }, 0.3);
 tl.from('.hero-eyebrow span', { yPercent: 100, duration: 0.8, ease: 'power3.out' }, 0.5);
 tl.to('.nav-logo', { opacity: 1, duration: 0.6 }, 0.8);
 tl.to('.nav-links a', { opacity: 1, duration: 0.5, stagger: 0.08 }, 0.9);
-if (isMobile()) {
-  gsap.set(drawerLinks, { opacity: 0 });
-  gsap.set(drawer, { yPercent: -100 });
-}
+tl.to('.nav-burger',  { opacity: 1, duration: 0.5 }, 0.9);
+tl.to('.hero-scroll', { opacity: 1, duration: 0.8 }, 1.4);
+tl.from('.hero-scroll-line', { scaleX: 0, transformOrigin: 'left', duration: 1, ease: 'power3.out' }, 1.4);
+
 /* ── PARALLAX (disabled on touch) ── */
 if (!('ontouchstart' in window)) {
   gsap.utils.toArray('.hero-cell img').forEach(img => {
@@ -910,56 +946,54 @@ gsap.from('.footer-top > div', {
 /* ── NAV SCROLL ── */
 ScrollTrigger.create({
   start: 'top -90',
-  onEnter:     () => gsap.to('nav', { background: 'rgba(245,240,232,0.94)', backdropFilter: 'blur(12px)',  padding: `0.85rem var(--px)`, duration: 0.4 }),
-  onLeaveBack: () => gsap.to('nav', { background: 'transparent',           backdropFilter: 'blur(0px)',   padding: `1.25rem var(--px)`, duration: 0.4 })
+  onEnter: () => gsap.to('nav', { background: 'rgba(245,240,232,0.94)', backdropFilter: 'blur(12px)', padding: `0.85rem var(--px)`, duration: 0.4 }),
+  onLeaveBack: () => gsap.to('nav', { background: 'transparent', backdropFilter: 'blur(0px)', padding: `1.25rem var(--px)`, duration: 0.4 })
+});
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+const smoother = ScrollSmoother.create({
+  wrapper: "#smooth-wrapper",
+  content: "#smooth-content",
+  smooth: 2,
+  normalizeScroll: true,
+  ignoreMobileResize: true,
+  preventDefault: true
 });
 
-/* ── SCROLL LATERAL HERO IMGS ── */
-(function initHeroGallery() {
-  const strip = document.querySelector('#hero-gallery .horiz-gallery-strip');
-  if (!strip) return;
+//Horizontal Scroll Galleries
+if (document.getElementById("portfolio")) {
+  const horizontalSections = gsap.utils.toArray(".horiz-gallery-wrapper");
 
-const getX = () => {
-  const totalW = strip.scrollWidth;
-  const viewW  = window.innerWidth;
-  const firstWrap = strip.querySelector('.project-wrap');
-  const firstW = firstWrap.offsetWidth;
-  const padding = parseFloat(getComputedStyle(firstWrap).paddingLeft) + 
-                  parseFloat(getComputedStyle(firstWrap).paddingRight);
-  const imgW = firstW - padding;
+  horizontalSections.forEach(function (sec, i) {
+    const pinWrap = sec.querySelector(".horiz-gallery-strip");
 
-  // Offset real actual del strip
-  const currentX = gsap.getProperty(strip, 'x') || 0;
-  const stripRect = strip.getBoundingClientRect();
-  const naturalLeft = stripRect.left - currentX; // dónde estaría sin transform
+    let pinWrapWidth;
+    let horizontalScrollLength;
 
-  const startX = (viewW - imgW) / 2 - naturalLeft;
-  const endX   = startX - (totalW - imgW - padding);
-
-  return { startX, travelX: endX - startX };
-};
-
-gsap.set(strip, { opacity: 0 });
-
-// Espera a que el DOM esté listo
-ScrollTrigger.refresh();
-  const { startX } = getX();
-  gsap.set(strip, { x: startX, transformOrigin: '0 0' , opacity: 1});
-
-  ScrollTrigger.create({
-    trigger:             '#hero-gallery',
-    start:               'top top',
-    end:                 () => `+=${Math.abs(getX().travelX)}`,
-    pin:                 true,
-    scrub:               1,
-    anticipatePin:       1,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => {
-      const { startX, travelX } = getX();
-      gsap.set(strip, { x: startX + travelX * self.progress, transformOrigin: '0 0' });
+    function refresh() {
+      pinWrapWidth = pinWrap.scrollWidth;
+      horizontalScrollLength = pinWrapWidth - window.innerWidth;
     }
+
+    refresh();
+    // Pinning and horizontal scrolling
+    gsap.to(pinWrap, {
+      scrollTrigger: {
+        scrub: true,
+        trigger: sec,
+        pin: sec,
+        start: "center center",
+        end: () => `+=${pinWrapWidth}`,
+        invalidateOnRefresh: true
+      },
+      x: () => -horizontalScrollLength,
+      ease: "none"
+    });
+
+    ScrollTrigger.addEventListener("refreshInit", refresh);
   });
-})();
+}
+
 </script>
 </body>
 </html>
